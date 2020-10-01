@@ -6,10 +6,10 @@ pipeline {
     }
 
     stages {
-        stage(one) {
-            when {
+        stage('build') {
+            /*when {
                 changeset "**/worker/**"
-            }
+            }*/
 
             steps {
                 echo 'Compiling worker app'
@@ -18,10 +18,10 @@ pipeline {
                 }
             }
         }
-        stage(two) {
-            when {
+        stage('test') {
+            /*when {
                 changeset "**/worker/**"
-            }
+            }*/
 
             steps {
                 echo 'Running Unit Tets on worker app'
@@ -30,17 +30,16 @@ pipeline {
                 }
             }
         }
-        stage(three) {
-            when {
+        stage('package'){
+            /*when {
                 branch 'master'
                 changeset "**/worker/**"
-            }
+            }*/
 
             steps {
                 echo 'Packaging worker app'
                 dir('worker') {
-                    sh 'mvn package -DskipTests'
-                    archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+                    sh 'mvn package'
                 }
             }
         }
