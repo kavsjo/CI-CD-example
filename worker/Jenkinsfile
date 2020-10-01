@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('build') {
             when {
-                changeset "**/worker**"
+                changeset "**/worker/**"
             }   
             steps {
                 echo 'Compiling worker app'
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('test') {
             when {
-                changeset "**/worker**"
+                changeset "**/worker/**"
             }   
             steps {
                 echo 'Running Unit Tets on worker app'
@@ -34,7 +34,7 @@ pipeline {
         stage('package'){
             when {
                 branch 'master'
-                changeset "**/worker**"
+                changeset "**/worker/**"
             }   
             steps {
                 echo 'Packaging worker app'
