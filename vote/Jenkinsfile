@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Compiling vote app'
                 dir('vote ') {
-                    sh 'sudo pip install -r requirements.txt'
+                    sh 'pip install -h -r requirements.txt'
                 }
             }
         }
