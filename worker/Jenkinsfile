@@ -31,10 +31,10 @@ pipeline {
                 }
             }
         }
-        stage('package'){
+        stage('package') {
             when {
                 branch 'master'
-                changeset "**/worker/**"
+                changeset "**/worker**"
             }   
             steps {
                 echo 'Packaging worker app'
