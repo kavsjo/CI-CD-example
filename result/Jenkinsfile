@@ -48,7 +48,7 @@ pipeline {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
                         def resultImage = docker.build("kavsjo/result:v${env.BUILD_ID}", "./result")
                         resultImage.push()
-                        resultImage.push("${env.BRANCH}")
+                        resultImage.push("latest")
                     }
                 }
             }
