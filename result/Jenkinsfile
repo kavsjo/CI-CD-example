@@ -52,6 +52,7 @@ pipeline {
                     }
                 }
             }
+        }
     }
 
     post {
@@ -65,6 +66,4 @@ pipeline {
             slackSend (channel: "instavote-cd", message: "Build Succeded - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
         } 
     }
-}
-
 }
