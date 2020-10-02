@@ -40,7 +40,6 @@ pipeline {
             agent any
             when {
                 changeset "**/result/**"
-               
             }   
             steps {
                 echo 'Packaging result app with docker'

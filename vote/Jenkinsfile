@@ -8,8 +8,8 @@ pipeline {
                 docker {
                     image 'python:3.8.6-slim'
                     args '--user root'
+                }
             }
-        }
             when {
                 changeset "**/vote/**"
             }   
@@ -43,7 +43,7 @@ pipeline {
             agent any
             when {
                 changeset "**/vote/**"
-                
+                branch 'master'
             }   
             steps {
                 echo 'Packaging vote app with docker'
