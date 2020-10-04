@@ -3,7 +3,7 @@ pipeline {
     agent none
 
     stages {
-        stage('build') {
+        stage('build-worker') {
             agent {
                 docker {
                     image 'maven:3.6.1-jdk-8-alpine'
@@ -20,7 +20,7 @@ pipeline {
                 }
             }
         }
-        stage('test') {
+        stage('test-worker') {
             agent {
                 docker {
                     image 'maven:3.6.1-jdk-8-alpine'
@@ -37,7 +37,7 @@ pipeline {
                 }
             }
         }
-        stage('package') {
+        stage('package-worker') {
             agent {
                 docker {
                     image 'maven:3.6.1-jdk-8-alpine'
@@ -56,7 +56,7 @@ pipeline {
                 }
             }
         }
-        stage('docker-package') {
+        stage('docker-package-worker') {
             agent any
             when {
                 changeset "**/worker/**"
@@ -73,7 +73,7 @@ pipeline {
                 }
             }
         }
-        stage('build') {
+        stage('build-result') {
             agent {
                 docker {
                     image 'node:8.16.0-alpine'
@@ -89,7 +89,7 @@ pipeline {
                 }
             }
         }
-        stage('test') {
+        stage('test-result') {
             agent {
                 docker {
                     image 'node:8.16.0-alpine'
@@ -106,7 +106,7 @@ pipeline {
                 }
             }
         }
-        stage('docker-package') {
+        stage('docker-package-result') {
             agent any
             when {
                 changeset "**/result/**"
@@ -123,7 +123,7 @@ pipeline {
                 }
             }
         }
-        stage('build') {
+        stage('build-vote') {
             agent {
                 docker {
                     image 'python:3.8.6-slim'
@@ -140,7 +140,7 @@ pipeline {
                 }
             }
         }
-        stage('test') {
+        stage('test-vote') {
             agent {
                 docker {
                     image 'python:3.8.6-slim'
@@ -158,7 +158,7 @@ pipeline {
                 }
             }
         }        
-        stage('docker-package') {
+        stage('docker-package-vote') {
             agent any
             when {
                 changeset "**/vote/**"
