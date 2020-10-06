@@ -29,7 +29,7 @@ services:
     networks:
       - instavote
     variables:  
-        POSTGRES_HOST_AUTH_METHOD=trust
+      -  POSTGRES_HOST_AUTH_METHOD=trust
 
   result:
     image: kavsjo/result:latest
