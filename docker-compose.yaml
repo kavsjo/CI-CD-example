@@ -24,12 +24,12 @@ services:
 
   db:
     image: postgres:13.0
+    environment:
+        POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - "db-data:/var/lib/postgresql/data"
     networks:
       - instavote
-    variables:  
-      -  POSTGRES_HOST_AUTH_METHOD=trust
 
   result:
     image: kavsjo/result:latest
