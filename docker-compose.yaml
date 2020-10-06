@@ -28,6 +28,8 @@ services:
       - "db-data:/var/lib/postgresql/data"
     networks:
       - instavote
+    variables:  
+        POSTGRES_HOST_AUTH_METHOD=trust
 
   result:
     image: kavsjo/result:latest
