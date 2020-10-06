@@ -37,8 +37,7 @@ pipeline {
                     sh 'nosetests -v'
                 }
             }
-        }
-        
+        }        
         stage('docker-package') {
             agent any
             when {
