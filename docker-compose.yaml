@@ -7,7 +7,19 @@ networks:
   instavote:
     driver: bridge        
 
-services:  
+services: 
+    
+  e2e:
+    build: ./tests/
+    depends_on: 
+      - vote
+      - result
+      - worker
+      - db
+      - redis
+    networks: 
+      - front-tier
+  
   vote:
     image: kavsjo/vote:latest
     ports:
